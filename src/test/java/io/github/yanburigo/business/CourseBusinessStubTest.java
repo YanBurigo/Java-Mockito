@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import io.github.yanburigo.service.CourseService;
 import io.github.yanburigo.service.stubs.CourseServiceStub;
 
-class CourseBusinessTest {
+class CourseBusinessStubTest {
 
     @Test
     void testCoursesRelatedToSpring_When_UsingAStub() {
