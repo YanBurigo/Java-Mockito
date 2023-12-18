@@ -3,6 +3,7 @@ package io.github.yanburigo.business;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 import java.util.List;
@@ -57,5 +58,16 @@ public class ListTest {
 		// When / Act & Then / Assert
 		assertEquals("Valid", list.get(anyInt()));
 		assertNotNull(list.get(1));
+	}
+	
+	@Test
+	void testMockingList_when_ThrowsAnException() {
+		
+		// Given / Arrange
+		var list = mock(List.class);
+		when(list.get(anyInt())).thenThrow(new RuntimeException("Deu rui"));
+		
+		// When / Act & Then / Assert
+		assertThrows(RuntimeException.class, () -> { list.get(anyInt());}, () -> "Should have throw an RuntimeException");
 	}
 }
